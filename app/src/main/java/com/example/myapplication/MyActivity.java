@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -97,12 +98,17 @@ public class MyActivity extends AppCompatActivity {
         PlaceRecyclerAdapter adapter = new PlaceRecyclerAdapter(results);
         mRecyclerView.setAdapter(adapter);
 
+
+
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = nameEditText.getText().toString();
                 String address = addressEditText.getText().toString();
                 String phone = phoneEditText.getText().toString();
+
+
+
 
 
                 // DB에 저장
@@ -114,5 +120,9 @@ public class MyActivity extends AppCompatActivity {
                 realm.commitTransaction();
             }
         });
+
+
+
+
     }
 }

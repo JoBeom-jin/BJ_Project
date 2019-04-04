@@ -11,7 +11,7 @@ public class Place extends RealmObject {
 
     }
 
-    public Place(String name, String address, String phone) {
+    public Place(String name, String address, String phone, int pos) {
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -40,6 +40,7 @@ public class Place extends RealmObject {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 
 
 

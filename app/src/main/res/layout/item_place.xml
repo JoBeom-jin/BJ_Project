@@ -110,7 +110,11 @@
 
     </LinearLayout>
 
-
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:background="@drawable/del_bt"
+        android:id="@+id/delete_bt"/>
 
 
 </LinearLayout>
