@@ -3,10 +3,25 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.myapplication.models.Place;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class MyActivity extends AppCompatActivity {
+
+    private EditText nameEditText;
+    private EditText addressEditText;
+    private EditText phoneEditText;
+    private RecyclerView mRecyclerView;
+
+    private Realm realm = Realm.getDefaultInstance();
 
     Button menu_bt1;
     Button menu_bt2;
@@ -67,5 +82,37 @@ public class MyActivity extends AppCompatActivity {
         menu_bt2.setOnClickListener(menu2_click);
         home_bt2.setOnClickListener(home_click);
         menu_bt5.setOnClickListener(menu5_click);
+
+        nameEditText = findViewById(R.id.name_edit);
+        addressEditText = findViewById(R.id.age_edit);
+        phoneEditText = findViewById(R.id.phone_edit);
+
+        mRecyclerView = findViewById(R.id.recycler_view);
+
+
+        // 쿼리
+        RealmResults<Place> results = realm.where(Place.class)
+                .sort("name", Sort.DESCENDING).findAll();
+
+        PlaceRecyclerAdapter adapter = new PlaceRecyclerAdapter(results);
+        mRecyclerView.setAdapter(adapter);
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = nameEditText.getText().toString();
+                String address = addressEditText.getText().toString();
+                String phone = phoneEditText.getText().toString();
+
+
+                // DB에 저장
+                realm.beginTransaction();
+                Place place = realm.createObject(Place.class);
+                place.setName(name);
+                place.setAddress(address);
+                place.setPhone(phone);
+                realm.commitTransaction();
+            }
+        });
     }
 }
