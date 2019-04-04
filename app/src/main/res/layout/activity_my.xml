@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <EditText
                 android:id="@+id/name_edit"
                 android:layout_width="220dp"

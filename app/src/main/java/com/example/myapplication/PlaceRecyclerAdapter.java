@@ -44,9 +44,9 @@ public class PlaceRecyclerAdapter extends RealmRecyclerViewAdapter<Place, PlaceR
         studentViewHolder.del_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dd = String.valueOf(position);
                 Intent intent = new Intent (v.getContext(), MyActivity.class);
-                intent.putExtra("pos",dd);
+                intent.putExtra("pos",String.valueOf(position));
+                v.getContext().startActivity(intent);
             }
         });
 
