@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".InfopopupActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"></activity>
         <activity android:name=".PlaceRecyclerAdapter" />
         <activity android:name=".models.Place" />
 
@@ -25,7 +27,6 @@
         <activity android:name=".MyActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".DBAdapter" />
         <activity android:name=".TitleActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>

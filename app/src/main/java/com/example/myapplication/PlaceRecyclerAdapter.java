@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -47,6 +48,7 @@ public class PlaceRecyclerAdapter extends RealmRecyclerViewAdapter<Place, PlaceR
                 Intent intent = new Intent (v.getContext(), MyActivity.class);
                 intent.putExtra("pos",String.valueOf(position));
                 v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
             }
         });
 
