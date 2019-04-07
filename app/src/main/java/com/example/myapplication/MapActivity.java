@@ -107,7 +107,7 @@ public class MapActivity extends AppCompatActivity
 
         map.addMarker(markerOptions);
 
-        map.setOnMarkerClickListener(this);
+        //map.setOnMarkerClickListener(this);
 
         map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
         map.animateCamera(CameraUpdateFactory.zoomTo(15));

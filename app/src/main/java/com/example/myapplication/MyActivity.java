@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -62,9 +63,10 @@ public class MyActivity extends AppCompatActivity {
     View.OnClickListener menu5_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(getApplicationContext(), MyActivity.class);
-            startActivity(i);
-            finish();
+            Log.e("1", "Realm 디렉토리" + realm.getPath());
+            //Intent i = new Intent(getApplicationContext(), MyActivity.class);
+            //startActivity(i);
+            //finish();
         }
     };
 

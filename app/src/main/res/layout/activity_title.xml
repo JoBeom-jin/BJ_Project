@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TitleActivity"
-    android:background="@drawable/back"
+    android:background="@drawable/main_back"
     android:orientation="vertical">
 
     <LinearLayout
@@ -46,14 +46,14 @@
             android:background="@drawable/menu_bt4"/>
 
     </LinearLayout>
-    
-    
+
+
     <Button
+        android:id="@+id/my_info_bt"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:background="@drawable/my_info"
-        android:id="@+id/my_info_bt"/>
+        android:layout_gravity="bottom"
+        android:background="@drawable/my_info" />
 
 
     
