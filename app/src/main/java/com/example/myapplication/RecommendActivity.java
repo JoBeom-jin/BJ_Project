@@ -1,7 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,27 +8,32 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TitleActivity extends AppCompatActivity {
+import com.example.myapplication.models.Place;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
+import io.realm.Sort;
+
+public class RecommendActivity extends AppCompatActivity {
 
     Button menu_bt1;
     Button menu_bt2;
     Button home_bt2;
     Button menu_bt5;
     Button menu_bt4;
-    Button my_info_bt;
 
+    TextView place_name;
+    TextView phone_name;
+    TextView addr_name;
 
-
-    View.OnClickListener info_click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-            Intent i = new Intent(getApplicationContext(),InfopopupActivity.class);
-            startActivity(i);
-        }
-    };
-
+    private Realm realm = Realm.getDefaultInstance();
 
     View.OnClickListener menu1_click = new View.OnClickListener() {
         @Override
@@ -50,6 +54,7 @@ public class TitleActivity extends AppCompatActivity {
         }
     };
 
+
     View.OnClickListener home_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -59,7 +64,6 @@ public class TitleActivity extends AppCompatActivity {
         }
     };
 
-
     View.OnClickListener menu4_click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -68,6 +72,7 @@ public class TitleActivity extends AppCompatActivity {
             finish();
         }
     };
+
 
     View.OnClickListener menu5_click = new View.OnClickListener() {
         @Override
@@ -81,21 +86,18 @@ public class TitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_title);
+        setContentView(R.layout.activity_recommend);
 
+        place_name = (TextView) findViewById(R.id.place_name);
+        addr_name = (TextView) findViewById(R.id.addr_name);
+        phone_name = (TextView) findViewById(R.id.phone_name);
 
 
         menu_bt1 = (Button) findViewById(R.id.menu_bt1);
         menu_bt2 = (Button) findViewById(R.id.menu_bt2);
         home_bt2 = (Button) findViewById(R.id.menu_bt3);
-        menu_bt4 = (Button) findViewById(R.id.menu_bt4);
         menu_bt5 = (Button) findViewById(R.id.menu_bt5);
-        my_info_bt = (Button) findViewById(R.id.my_info_bt);
-
-        SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
-        String nnn = sp.getString("m_name","");
-
-        Toast.makeText(getApplicationContext(), nnn+"님 환영합니다.",Toast.LENGTH_SHORT).show();
+        menu_bt4 = (Button) findViewById(R.id.menu_bt4);
 
 
         menu_bt1.setOnClickListener(menu1_click);
@@ -103,9 +105,21 @@ public class TitleActivity extends AppCompatActivity {
         home_bt2.setOnClickListener(home_click);
         menu_bt4.setOnClickListener(menu4_click);
         menu_bt5.setOnClickListener(menu5_click);
-        my_info_bt.setOnClickListener(info_click);
+
+
+        final RealmResults<Place> results = realm.where(Place.class).findAll();
+
+
+        final List<Place> placeList = new ArrayList<>();
+        for (Place place : results) {
+            placeList.add(place);
+        }
 
 
 
+        Collections.shuffle(placeList);
+        place_name.setText(placeList.get(0).getName());
+        addr_name.setText(placeList.get(0).getAddress());
+        phone_name.setText(placeList.get(0).getPhone());
     }
 }
