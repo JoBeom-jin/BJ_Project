@@ -19,6 +19,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MapActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -27,6 +29,8 @@ public class MapActivity extends AppCompatActivity
     Button home_bt2;
     Button menu_bt5;
     Button menu_bt4;
+
+
 
 
     View.OnClickListener menu1_click = new View.OnClickListener() {
@@ -100,30 +104,58 @@ public class MapActivity extends AppCompatActivity
         menu_bt4.setOnClickListener(menu4_click);
     }
 
+
     @Override
     public void onMapReady(final GoogleMap map) {
 
-        LatLng SEOUL = new LatLng(37.403524, 126.930413);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SEOUL);
-        markerOptions.title("서울");
-        markerOptions.snippet("한국의 수도");
 
 
+        ArrayList<MarkerItem> sample = new ArrayList();
 
-        BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.marker_icon);
-        Bitmap b=bitmapdraw.getBitmap();
-        Bitmap smallMarker = Bitmap.createScaledBitmap(b, 50, 50, false);
-        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+        sample.add(new MarkerItem(37.403882, 126.931122,"전산관", "1","00"));
+        //sample.add(new MarkerItem(37.402160, 126.929802));
 
-        map.addMarker(markerOptions);
+
+
+
+        for(int i=0; i<sample.size(); i++){
+            LatLng g = new LatLng(sample.get(i).getLat(), sample.get(i).getLon());
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions
+                    .position(g);
+
+            BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.marker_icon);
+            Bitmap b=bitmapdraw.getBitmap();
+            Bitmap smallMarker = Bitmap.createScaledBitmap(b, 70, 70, false);
+            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+
+            map.addMarker(markerOptions);
+        }
+
+
+
+
+
+
+
 
         //map.setOnMarkerClickListener(this);
+        LatLng gg = new LatLng(37.403882, 126.931122);
 
-        map.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
+
+
+        map.moveCamera(CameraUpdateFactory.newLatLng(gg));
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
     }
+
+
+
+
+
+
+
 
     @Override
     public boolean onMarkerClick(Marker marker){

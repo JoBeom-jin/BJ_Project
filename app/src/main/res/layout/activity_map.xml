@@ -9,12 +9,13 @@
     android:background="@drawable/back">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center">
 
         <Button
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
             android:id="@+id/menu_bt1"
@@ -22,24 +23,28 @@
 
 
         <Button
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
             android:id="@+id/menu_bt2"
             android:background="@drawable/menu_bt2"/>
 
         <Button
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
             android:id="@+id/menu_bt3"
             android:background="@drawable/home_bt2"/>
 
         <Button
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
             android:id="@+id/menu_bt4"
             android:background="@drawable/menu_bt3"/>
 
         <Button
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
             android:id="@+id/menu_bt5"

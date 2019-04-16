@@ -9,45 +9,46 @@
     android:background="@drawable/back">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="center">
 
         <Button
+            android:layout_weight="5"
+            android:layout_width="63dp"
+            android:layout_height="60dp"
             android:id="@+id/menu_bt1"
-            android:layout_width="63dp"
-            android:layout_height="60dp"
-            android:background="@drawable/menu_bt1" />
+            android:background="@drawable/menu_bt1"/>
 
 
         <Button
+            android:layout_weight="5"
+            android:layout_width="63dp"
+            android:layout_height="60dp"
             android:id="@+id/menu_bt2"
-            android:layout_width="63dp"
-            android:layout_height="60dp"
-            android:background="@drawable/menu_bt2" />
+            android:background="@drawable/menu_bt2"/>
 
         <Button
+            android:layout_weight="5"
+            android:layout_width="63dp"
+            android:layout_height="60dp"
             android:id="@+id/menu_bt3"
-            android:layout_width="63dp"
-            android:layout_height="60dp"
-            android:background="@drawable/home_bt2" />
+            android:background="@drawable/home_bt2"/>
 
         <Button
+            android:layout_weight="5"
+            android:layout_width="63dp"
+            android:layout_height="60dp"
             android:id="@+id/menu_bt4"
-            android:layout_width="63dp"
-            android:layout_height="60dp"
-            android:background="@drawable/menu_bt3" />
+            android:background="@drawable/menu_bt3"/>
 
         <Button
-            android:id="@+id/menu_bt5"
+            android:layout_weight="5"
             android:layout_width="63dp"
             android:layout_height="60dp"
-            android:background="@drawable/menu_bt4" />
+            android:id="@+id/menu_bt5"
+            android:background="@drawable/menu_bt4"/>
 
     </LinearLayout>
 

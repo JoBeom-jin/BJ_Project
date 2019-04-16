@@ -108,7 +108,8 @@ public class MyActivity extends AppCompatActivity {
 
         // 쿼리
         final RealmResults<Place> results = realm.where(Place.class)
-                .sort("name", Sort.DESCENDING).findAll();
+                .sort("name", Sort.DESCENDING)
+                .findAll();
 
         PlaceRecyclerAdapter adapter = new PlaceRecyclerAdapter(results);
         mRecyclerView.setAdapter(adapter);

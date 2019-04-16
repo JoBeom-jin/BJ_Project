@@ -17,7 +17,19 @@ public class TitleActivity extends AppCompatActivity {
     Button home_bt2;
     Button menu_bt5;
     Button menu_bt4;
+    Button hidden_bt;
     Button my_info_bt;
+
+
+
+    View.OnClickListener hidden_click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(getApplicationContext(), GMPage.class);
+            startActivity(i);
+            finish();
+        }
+    };
 
 
 
@@ -91,6 +103,9 @@ public class TitleActivity extends AppCompatActivity {
         menu_bt4 = (Button) findViewById(R.id.menu_bt4);
         menu_bt5 = (Button) findViewById(R.id.menu_bt5);
         my_info_bt = (Button) findViewById(R.id.my_info_bt);
+        hidden_bt = (Button) findViewById(R.id.hidden_bt);
+
+        hidden_bt.setOnClickListener(hidden_click);
 
         SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
         String nnn = sp.getString("m_name","");
