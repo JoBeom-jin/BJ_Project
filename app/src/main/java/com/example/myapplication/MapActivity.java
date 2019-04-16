@@ -112,8 +112,8 @@ public class MapActivity extends AppCompatActivity
 
         ArrayList<MarkerItem> sample = new ArrayList();
 
-        sample.add(new MarkerItem(37.403882, 126.931122,"전산관", "1","00"));
-        //sample.add(new MarkerItem(37.402160, 126.929802));
+        sample.add(new MarkerItem(37.403882, 126.931122,"임곡관", "1","00"));
+        sample.add(new MarkerItem(37.402160, 126.929802,"홍지관", "1","00"));
 
 
 
@@ -122,7 +122,9 @@ public class MapActivity extends AppCompatActivity
             LatLng g = new LatLng(sample.get(i).getLat(), sample.get(i).getLon());
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions
-                    .position(g);
+                    .position(g)
+                    .title(sample.get(i).getTitle())
+                    .snippet(sample.get(i).getAdd() + "," + sample.get(i).getPhone_num());
 
             BitmapDrawable bitmapdraw = (BitmapDrawable)getResources().getDrawable(R.drawable.marker_icon);
             Bitmap b=bitmapdraw.getBitmap();
@@ -134,7 +136,7 @@ public class MapActivity extends AppCompatActivity
 
 
 
-
+        map.setOnMarkerClickListener(this);
 
 
 
@@ -145,7 +147,7 @@ public class MapActivity extends AppCompatActivity
 
 
         map.moveCamera(CameraUpdateFactory.newLatLng(gg));
-        map.animateCamera(CameraUpdateFactory.zoomTo(15));
+        map.animateCamera(CameraUpdateFactory.zoomTo(17));
 
 
     }
@@ -159,7 +161,10 @@ public class MapActivity extends AppCompatActivity
 
     @Override
     public boolean onMarkerClick(Marker marker){
-        Toast.makeText(MapActivity.this, "정보 클릭", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getApplicationContext(), PlacepopupActivity.class);
+        i.putExtra("title", marker.getTitle());
+        i.putExtra("add_phone", marker.getSnippet());
+        startActivity(i);
         return true;
     }
 }
